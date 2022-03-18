@@ -38,6 +38,6 @@ bulk-git --status myrepA myrepB main
 # Compiled with shc
 
 ```
-shc -f bulk-git.sh
+shc -r -f bulk-git.sh -o bulk-git
 ```
 
