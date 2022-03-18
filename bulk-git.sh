@@ -12,7 +12,7 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
         help
         exit 1
     else
-        if [ $1 = '--status' ] || [ $1 = '--pull' ] || [ $1 = '--push' ]
+        if [ $1 = '--bulk' ] [ $1 = '--status' ] || [ $1 = '--pull' ] || [ $1 = '--push' ]
             then
                 for ((i=2; i<=PARAM_NUMB-1;i++));
                     do
@@ -27,52 +27,53 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
                     done
                 exit 1
         fi
-        #Operação Bulk
-        if [ $1 = '--bulk' ]
-            then
-                for d in */
-                    do
-                        REPO_FOLDER=$PWD/$d
-                        CHECK_REPO="$(git -C $REPO_FOLDER/ rev-parse 2>/dev/null; echo $?)"
-                        if [ $CHECK_REPO = "0" ]
-                            then
-                                if [ $2 = '--status' ] || [ $2 = '--pull' ] || [ $2 = '--push' ]
-                                    then
-                                    #Check Status
-                                    if [ $2 = '--status' ]
-                                        then
-                                        message 1 $d
-                                        git -C $d status
-                                    fi
-                                    #Check pull
-                                    if [ $2 = '--pull' ]
-                                        then
-                                        message 2 $d ${@: -1}
-                                        git -C $d checkout ${@: -1}
-                                        git -C $d pull
-                                    fi
-                                    #Check push
-                                    if [ $2 = '--push' ]
-                                        then
-                                        message 3 $d
-                                        git -C $d add -A
-                                        git -C $d commit -m "$DEFAULT_COMMIT_MSG"
-                                        git -C $d push
-                                    fi
-                                else
-                                message 6
-                                exit 1
-                                fi
-                            else
-                            message 1 $d
-                            message 7 $d
-                        fi
-                    done
-        else
-        message 8
-        exit 1
-        fi
 fi
+#         #Operação Bulk
+#         if [ $1 = '--bulk' ]
+#             then
+#                 for d in */
+#                     do
+#                         REPO_FOLDER=$PWD/$d
+#                         CHECK_REPO="$(git -C $REPO_FOLDER/ rev-parse 2>/dev/null; echo $?)"
+#                         if [ $CHECK_REPO = "0" ]
+#                             then
+#                                 if [ $2 = '--status' ] || [ $2 = '--pull' ] || [ $2 = '--push' ]
+#                                     then
+#                                     #Check Status
+#                                     if [ $2 = '--status' ]
+#                                         then
+#                                         message 1 $d
+#                                         git -C $d status
+#                                     fi
+#                                     #Check pull
+#                                     if [ $2 = '--pull' ]
+#                                         then
+#                                         message 2 $d ${@: -1}
+#                                         git -C $d checkout ${@: -1}
+#                                         git -C $d pull
+#                                     fi
+#                                     #Check push
+#                                     if [ $2 = '--push' ]
+#                                         then
+#                                         message 3 $d
+#                                         git -C $d add -A
+#                                         git -C $d commit -m "$DEFAULT_COMMIT_MSG"
+#                                         git -C $d push
+#                                     fi
+#                                 else
+#                                 message 6
+#                                 exit 1
+#                                 fi
+#                             else
+#                             message 1 $d
+#                             message 7 $d
+#                         fi
+#                     done
+#         else
+#         message 8
+#         exit 1
+#         fi
+# fi
 
 
 
