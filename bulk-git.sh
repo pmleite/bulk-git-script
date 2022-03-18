@@ -5,6 +5,7 @@
 
 source ./modules/vars.sh
 source ./modules/help_and_msgs.sh
+source ./modules/git_operations.sh
 
 if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ] 
     then
@@ -25,25 +26,16 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
                             #If it is a GIT Repository
                                 then
                                     #Check Status
-                                    if [ $1 = '--status' ]
-                                        then
-                                        message 1 ${!i}
-                                        git -C ./${!i} status
-                                    fi
-                                    #Check pull
-                                    if [ $1 = '--pull' ]
-                                        then
-                                        message 2 ${!i} ${@: -1}
-                                        git -C ./${!i} checkout ${@: -1}
-                                        git -C ./${!i} pull
-                                    fi
+                                    git-operation $1 ${!i} ${@: -1}
+
                                     #Check push
                                     if [ $1 = '--push' ]
                                         then
-                                        message 3 ${!i} ${@: -1}
-                                        git -C ./${!i} add -A
-                                        git -C ./${!i} commit -m "$DEFAULT_COMMIT_MSG"
-                                        git -C ./${!i} push
+                                        echo aqui
+                                        #message 3 ${!i} ${@: -1}
+                                        # git -C ./${!i} add -A
+                                        # git -C ./${!i} commit -m "$DEFAULT_COMMIT_MSG"
+                                        # git -C ./${!i} push
                                     fi
                                 else
                                 message 4 ${!i}
@@ -53,6 +45,7 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
                         exit 1
                       fi
                     done
+                    exit 1
         fi
         #Operação Bulk
         if [ $1 = '--bulk' ]
