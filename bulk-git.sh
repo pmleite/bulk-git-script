@@ -36,7 +36,7 @@ help()
     echo 
     echo "OPTIONAL:"
     echo "    --bulk                Scan all folder relative to the script location"   
-    echo "                          and does the bulk comand indicated."
+    echo "                          and does the bulk command indicated."
     echo
     echo "                          How to use (status example):"   
   printf "                          ${RED}./bulk-git.sh --bulk --status dev${OFF}\n"
