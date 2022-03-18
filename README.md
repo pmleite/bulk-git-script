@@ -23,13 +23,16 @@ Bulk git push operation (all repositories folders)
 bulk-git --bulk --push main 
 ```
 
-Bulk git push operation (some repositries)
+Bulk git push operation (some repositries folders)
  
 ```
-bulk-git --status rep01 rep02 resp03 branch 
+bulk-git --status repFolder01 repFolder02 respFolder03 branch 
 ```
 
-
+Git status of the myrepA and myrepB prj
+```
+bulk-git --status myrepA myrepB main 
+```
 
 
 # Compiled with shc
