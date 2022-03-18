@@ -18,5 +18,14 @@ git-operation()
       git -C ./$2 commit -m "$DEFAULT_COMMIT_MSG"
       git -C ./$2 push
     ;;
+    "checkfolder")
+      echo $1 $2 $3 $4 $5 $6
+      if [ $3 = "0" ]
+        then
+         git-operation $4 $5 $6
+        else
+         message 4 $5
+      fi
+    ;;
   esac
 }

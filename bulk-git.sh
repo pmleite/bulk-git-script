@@ -20,26 +20,17 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
                       if [ -d ${!i} ]
                         then
                         #Check if it is a GIT Folder
-                            REPO_FOLDER=$PWD/${!i}
-                            CHECK_REPO="$(git -C $REPO_FOLDER/ rev-parse 2>/dev/null; echo $?)"
-                            if [ $CHECK_REPO = "0" ]
-                            #If it is a GIT Repository
-                                then
-                                    #Check Status
-                                    git-operation $1 ${!i} ${@: -1}
-
-                                    #Check push
-                                    if [ $1 = '--push' ]
-                                        then
-                                        echo aqui
-                                        #message 3 ${!i} ${@: -1}
-                                        # git -C ./${!i} add -A
-                                        # git -C ./${!i} commit -m "$DEFAULT_COMMIT_MSG"
-                                        # git -C ./${!i} push
-                                    fi
-                                else
-                                message 4 ${!i}
-                            fi
+                            git-operation "checkfolder" $PWD/${!i}/ $(git -C $PWD/${!i} rev-parse 2>/dev/null; echo $?) $1 ${!i} ${@: -1}
+                            #REPO_FOLDER=$PWD/${!i}
+                            #CHECK_REPO="$(git -C $REPO_FOLDER/ rev-parse 2>/dev/null; echo $?)"
+                            # if [ $CHECK_REPO = "0" ]
+                            # #If it is a GIT Repository
+                            #     then
+                            #         #Execute git operations
+                            #         git-operation $1 ${!i} ${@: -1}
+                            #     else
+                            #     message 4 ${!i}
+                            # fi
                         else
                         message 5
                         exit 1
