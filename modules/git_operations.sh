@@ -59,6 +59,5 @@ git-operation()
         message 8 
       fi
     ;;
-
   esac
 }
