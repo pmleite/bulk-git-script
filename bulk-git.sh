@@ -148,7 +148,7 @@ git-operation()
                   echo $d
                   git-operation $2  $PWD/$d $CHECK ${@: -1}
                 else
-                  CHECK="$(git -C ./ rev-parse 2>/dev/null; echo $?)"
+                    CHECK="$(git -C ./ rev-parse 2>/dev/null; echo $?)"
                     if [ $CHECK = "0" ]
                         then
                             git-operation $2  $PWD $CHECK ${@: -1}
