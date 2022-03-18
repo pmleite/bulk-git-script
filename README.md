@@ -40,4 +40,5 @@ bulk-git --status myrepA myrepB main
 ```
 shc -r -f bulk-git.sh -o bulk-git
 ```
+The -r parameter is important for the binary work in other systems
 
