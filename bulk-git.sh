@@ -154,7 +154,6 @@ git-operation()
                         else
                             message 7 $d
                     fi
-                 
               fi
             done
         else
