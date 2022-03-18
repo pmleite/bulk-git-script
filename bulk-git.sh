@@ -2,12 +2,9 @@
 #
 # By.:Paulo Leite
 # Ver: 1.5
-#
-#
 
-source ./modules/env.sh
+source ./modules/vars.sh
 source ./modules/help_and_msgs.sh
-
 
 if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ] 
     then
@@ -71,42 +68,35 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
                                     #Check Status
                                     if [ $2 = '--status' ]
                                         then
-                                        echo 
-                                        printf "${GREEN}Status do repositório - $d${OFF}:\n"
+                                        message 1 $d
                                         git -C $d status
                                     fi
                                     #Check pull
                                     if [ $2 = '--pull' ]
                                         then
-                                        echo 
-                                        printf "Pull do repositório ${GREEN}[$d]${OFF} branch ${GREEN}[${@: -1}]:${OFF}\n"
+                                        message 2 $d ${@: -1}
                                         git -C $d checkout ${@: -1}
                                         git -C $d pull
                                     fi
                                     #Check push
                                     if [ $2 = '--push' ]
                                         then
-                                        echo 
-                                        printf "Push do repositório ${GREEN}[$d]${OFF} no branch atual:${OFF}\n"
+                                        message 3 $d
                                         git -C $d add -A
                                         git -C $d commit -m "$DEFAULT_COMMIT_MSG"
                                         git -C $d push
                                     fi
                                 else
-                                printf "${RED}Operacao inválida!!"
-                                echo
+                                message 6
                                 exit 1
                                 fi
                             else
-                            echo
-                            printf "${GREEN}Status do repositório - $d${OFF}:\n"
-                            printf "${RED}A pasta $d não é um respositório${OFF}:\n"
-                            echo
+                            message 1 $d
+                            message 7 $d
                         fi
                     done
         else
-        printf "${RED}Operacao inválida!!"
-        echo
+        message 8
         exit 1
         fi
 fi

@@ -2,15 +2,6 @@
 #
 #
 
-STATUS_MSG="Status of the repository"
-BRANCH_MSG="of branch"
-PULL_MSG="Pulling repository"
-PUSH_MSG="Pushing repository"
-NOT_REPOSITORY_MSG="this is not a GIT repository"
-WRONG_REPOSITORY_MSG="Those are not GIT repository folders! For instructions Type: ./bulk-git.sh --help"
-
-
-
 help()
 {
     clear
@@ -65,11 +56,21 @@ message()
       printf "$PUSH_MSG ${GREEN}[$2]${OFF} no branch atual${OFF}\n"
     ;;
     4)
-      printf "${RED} $NOT_REPOSITORY_MSG ${OFF}\n"
+      printf "${RED}$NOT_REPOSITORY_MSG ${OFF}\n"
     ;;
     5)
-      printf "${RED} $WRONG_REPOSITORY_MSG ${OFF}\n"
+      printf "${RED}$WRONG_REPOSITORY_MSG ${OFF}\n"
     ;;
+    6)
+      printf "${RED}$INVALID_BULK_OPERATION_MSG ${OFF}\n"
+    ;;
+    7)
+      printf "${RED}$2 $INVALID_FOLDER_MSG ${OFF}\n"
+    ;;
+    8)
+      printf "${RED}$INVALID_OPERATION_MSG ${OFF}\n"
+    ;;
+
   esac
   echo
 }
