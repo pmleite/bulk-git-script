@@ -10,7 +10,7 @@ source ./modules/git_operations.sh
 if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ] 
     then
         help
-#       exit 1
+        exit 1
     else
         if [ $1 = '--status' ] || [ $1 = '--pull' ] || [ $1 = '--push' ]
             then
@@ -19,24 +19,13 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
                       #check if folder exists
                       if [ -d ${!i} ]
                         then
-                        #Check if it is a GIT Folder
-                            git-operation "checkfolder" $PWD/${!i}/ $(git -C $PWD/${!i} rev-parse 2>/dev/null; echo $?) $1 ${!i} ${@: -1}
-                            #REPO_FOLDER=$PWD/${!i}
-                            #CHECK_REPO="$(git -C $REPO_FOLDER/ rev-parse 2>/dev/null; echo $?)"
-                            # if [ $CHECK_REPO = "0" ]
-                            # #If it is a GIT Repository
-                            #     then
-                            #         #Execute git operations
-                            #         git-operation $1 ${!i} ${@: -1}
-                            #     else
-                            #     message 4 ${!i}
-                            # fi
+                            git-operation $1 "checkfolder" $PWD/${!i}/ $(git -C $PWD/${!i} rev-parse 2>/dev/null; echo $?) ${!i} ${@: -1}
                         else
-                        message 5
-                        exit 1
+                            message 5
+                            exit 1
                       fi
                     done
-                    exit 1
+                exit 1
         fi
         #Operação Bulk
         if [ $1 = '--bulk' ]
