@@ -3,6 +3,13 @@
 This script does GIT bulk operation like status, pull, push
 
 
+# Examples
+
+bulk-git --bulk 
+
+
+
+
 
 
 
