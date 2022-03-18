@@ -1,2 +1,2 @@
 #!/bin/bash
-cp bulk-git /usr/local/bin
+sudo cp bulk-git /usr/local/bin
