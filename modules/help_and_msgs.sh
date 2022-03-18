@@ -7,6 +7,8 @@ BRANCH_MSG="of branch"
 PULL_MSG="Pulling repository"
 PUSH_MSG="Pushing repository"
 NOT_REPOSITORY_MSG="this is not a GIT repository"
+WRONG_REPOSITORY_MSG="Those are not GIT repository folders! For instructions Type: ./bulk-git.sh --help"
+
 
 
 help()
@@ -63,7 +65,10 @@ message()
       printf "$PUSH_MSG ${GREEN}[$2]${OFF} no branch atual${OFF}\n"
     ;;
     4)
-      printf "${RED} $NOT_REPOSITORY_MSGY ${OFF}\n"
+      printf "${RED} $NOT_REPOSITORY_MSG ${OFF}\n"
+    ;;
+    5)
+      printf "${RED} $WRONG_REPOSITORY_MSG ${OFF}\n"
     ;;
   esac
   echo

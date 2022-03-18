@@ -52,8 +52,7 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
                                 message 4 ${!i}
                             fi
                         else
-                        echo
-                        printf "${RED}Repositório(s) errado(s), digite ./bulk-git.sh --help  para aceder à ajuda${OFF}\n"
+                        message 5
                         exit 1
                       fi
                     done
