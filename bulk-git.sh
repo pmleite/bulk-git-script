@@ -148,7 +148,14 @@ git-operation()
                   echo $d
                   git-operation $2  $PWD/$d $CHECK ${@: -1}
                 else
-                  echo error!
+                  CHECK="$(git -C ./ rev-parse 2>/dev/null; echo $?)"
+                    if [ $CHECK = "0" ]
+                        then
+                            git-operation $2  $PWD $CHECK ${@: -1}
+                        else
+                            message 7 $d
+                    fi
+                 
               fi
             done
         else
