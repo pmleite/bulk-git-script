@@ -39,7 +39,7 @@ git-operation()
     fi
     ;;
 
-    #Execute Bulk Operation
+    #Execute Bulk Operations
     "--bulk")
       echo $1 $2 $3
       if [ $2 = '--status' ] || [ $2 = '--pull' ] || [ $2 = '--push' ]

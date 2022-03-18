@@ -14,9 +14,8 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
     else
         if [ $1 = '--status' ] || [ $1 = '--pull' ] || [ $1 = '--push' ]
             then
-                for ((i=2; i<=PARAM_NUMB-1;i++));
+                for ((i=2; i<=$#-1;i++));
                     do
-                      #check if folder exists
                       if [ -d ${!i} ]
                         then
                             git-operation $1 $PWD/${!i}/ $(git -C $PWD/${!i} rev-parse 2>/dev/null; echo $?) ${!i} ${@: -1}
@@ -27,7 +26,6 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
                     done
                 exit 1
         fi
-        #Operação Bulk
         if [ $1 = '--bulk' ]
             then
                 git-operation $1 $2 ${@: -1}
