@@ -4,18 +4,18 @@ git-operation()
 {
   case $1 in
     "--status")
-      echo $1 $2 $3 $4 $5
+      echo $3
       message 1 $2
       git -C $2 status
     ;;
     "--pull")
-      echo $1 $2 $3 $4 $5
+      echo $3
       message 2 $2 $5
       git -C $2 checkout $5
       git -C $2 pull
     ;;
     "--push")
-      echo $1 $2 $3 $4 $5
+      echo $3
       message 3 $2 $5
       git -C $2 add -A 
       git -C $2 commit -m "$DEFAULT_COMMIT_MSG"
