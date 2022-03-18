@@ -30,7 +30,7 @@ if [ $# -lt 3 ] || [ $1 = '--help' ] || [ $# -gt 9 ]
         #Operação Bulk
         if [ $1 = '--bulk' ]
             then
-                git-operation $1 
+                git-operation $1 $2 ${@: -1}
             else
                 message 8
                 exit 1
