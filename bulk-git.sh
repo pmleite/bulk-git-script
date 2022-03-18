@@ -27,8 +27,8 @@ help()
 {
     clear
     echo
-    printf "bulk-git.sh is a ${RED}BASH${OFF} script that allows to do bulk GIT operations\n"
-    printf "in multiple repositories simultaneously.${OFF}\n"
+    printf "bulk-git is a ${RED}BASH${OFF} script, cbinary compiled that allows you\n"
+    printf "to do bulk GIT operations.${OFF}\n"
     echo
     echo "How to use:"
     echo
@@ -39,7 +39,7 @@ help()
     echo "                          and does the bulk command indicated."
     echo
     echo "                          How to use (status example):"   
-  printf "                          ${RED}./bulk-git.sh --bulk --status dev${OFF}\n"
+  printf "                          ${RED}bulk-git.sh --bulk --status dev${OFF}\n"
     echo                            
     echo "                          Note: all * fields are demanded, even if not used"
     echo "                          (will be fixed in the future)"
@@ -50,7 +50,7 @@ help()
     echo "    --push                Execute the git push of the repository(ies)"
     echo "    --help                Show this help text" 
     echo "                          How to use (example):"   
-  printf "                          ${RED}./bulk-git.sh --pull [COMMAND] [BRANCH]${OFF}\n"
+  printf "                          ${RED}bulk-git.sh --pull [COMMAND] [BRANCH]${OFF}\n"
     echo         
     echo "REPOSITORY:"
     echo "    Repository Folder     Target folder, max 7"
